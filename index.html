@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Njagu 💗</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,'Times New Roman',serif;background:#fff5f6;color:#542638}
+#app{min-height:100vh;display:grid;place-items:center;padding:28px 16px;background:#fff5f6}
+main{width:min(720px,100%);text-align:center}.eyebrow{font:700 11px/1.4 Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#bd657e}
+h1{font-size:clamp(42px,9vw,76px);line-height:1.02;margin:18px 0;font-weight:500}.heart{font-size:42px;color:#d94e79;animation:beat 1.5s infinite;display:inline-block}
+.card{background:#ffffffd9;border:1px solid #f0cbd5;border-radius:26px;padding:clamp(24px,6vw,48px);box-shadow:0 18px 60px #8f385018;margin-top:28px}
+.message{font-size:clamp(18px,3vw,23px);line-height:1.75}
+button{border:0;border-radius:999px;background:#c9436d;color:white;padding:15px 25px;font:700 14px Arial,sans-serif;cursor:pointer;margin:8px 5px 0;box-shadow:0 8px 20px #c9436d33}
+button:hover{background:#a82f56;transform:translateY(-1px)}footer{font:12px Arial,sans-serif;opacity:.65;margin-top:28px}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.15)}24%{transform:scale(1)}36%{transform:scale(1.1)}}
+</style>
+</head>
+<body><div id="app"><main>
+<div class="eyebrow">A little journey made just for you</div><div class="heart" aria-hidden="true">♥</div>
+<h1 id="heading">Welcome, Njagu 💗</h1><div class="card" aria-live="polite">
+<p class="message" id="message">Hey Njagu, I made a little something for you. Ready? 🥰</p><div id="choices"></div>
+<button id="next" type="button">Continue 💌</button></div><footer>Made with love, just for you ♡</footer>
+</main></div>
+<script>
+const heading=document.getElementById('heading'),message=document.getElementById('message'),choices=document.getElementById('choices'),next=document.getElementById('next');let stage=0;
+const reasons=['I love how stubborn u are.','I love how u smile when I say stupid jokes.','I love how patient u are with me.','I love how u tolerate my bs.','I love how independent u are.','I love how soo smart and intelligent u are.','I love how loyal u are.','I love how cool and composed u are.','I love when u try to be as funny as me. It’s cute.','I love how u accept me for what I am.'];
+function show(n){stage=n;choices.innerHTML='';next.style.display='inline-block';
+if(stage===0){heading.textContent='Welcome, Njagu 💗';message.textContent='Hey Njagu, I made a little something for you. Ready? 🥰';next.textContent='Continue 💌';}
+else if(stage===1){heading.textContent='Riddle time 😏';message.textContent='What goes up and never goes down?';['Age 🎂','Balloon 🎈'].forEach(a=>{const b=document.createElement('button');b.textContent=a;b.onclick=()=>message.textContent='Wronggg 😂 Try again…';choices.appendChild(b)});next.textContent='Reveal the answer ❤️';}
+else if(stage===2){heading.textContent='Duhhh, my love ❤️';message.textContent='The answer is… my love for you. Duhhh! It only keeps growing. 🥹';next.textContent='Continue 💌';}
+else if(stage>=3&&stage<13){heading.textContent='10 reasons I love you 💕';message.textContent=`${stage-2}/10 — ${reasons[stage-3]}`;next.textContent=stage===12?'Continue 💗':'Next reason 💞';}
+else if(stage===13){heading.textContent='You thought that was all? 🥺';message.textContent='Those were only 10 reasons. There are so many more reasons why I love you, Njagu. I could never fit them all on one page. ❤️';next.textContent='One last question… 💍';}
+else{heading.textContent='Will you go to dinner with me? 💖';message.textContent='Njagu, would you like to go on a dinner date with me? 🥰';const yes=document.createElement('button');yes.textContent='YESSS ❤️';yes.onclick=()=>{heading.textContent='YAYYYY! 🥹❤️';message.textContent='I can’t wait! It’s a date, my love. I love you, Njagu! 💕';choices.innerHTML='';next.style.display='none';};const no=document.createElement('button');no.textContent='No 🙈';no.onclick=()=>message.textContent='Hmm, that button seems broken 😭 Try the other one, my love! 💗';choices.append(yes,no);next.style.display='none';}}
+next.addEventListener('click',()=>show(stage+1));show(0);
+</script></body></html>
